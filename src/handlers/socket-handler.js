@@ -1,6 +1,7 @@
 import { io } from "socket.io-client";
 import { userAgent } from "../constants/constants";
 import config from "../app-configs";
+import { randomInt } from "../helpers/random";
 
 const promiseTimeOut = 5000;
 
@@ -31,6 +32,11 @@ export const placeBet = async (socket, betInfo, gameInfo) =>
                 for (let index = 1; index <= bonus; index++) {
                     socket.emit("bonus", { chest: index });
                 }
+            }
+
+            if (data.jackpot) {
+                const index = randomInt(1, 9);
+                socket.emit("jackpot", { chest: index });
             }
 
             if (data.finish && isWaitForSettlement) {
