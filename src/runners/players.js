@@ -16,19 +16,19 @@ export const players = [
     {
         id: "999888778",
         nickname: "autobot998",
-        currency: "US$",
+        currency: "$US",
         system: "SC1",
     },
     {
         id: "999888779",
         nickname: "autobot997",
-        currency: "UT",
+        currency: "EURO",
         system: "SC1",
     },
     {
         id: "999888791",
         nickname: "autobot985",
-        currency: "YEN",
+        currency: "WON",
         system: "SC1",
     },
     {

@@ -53,9 +53,9 @@ fastify.post("/bet-by-batch", async (request, reply) => {
 
         const player = findPlayer(currency, config.system);
         const setBoardParams = { name: player.nickname, result: board.split(",").map((x) => parseInt(x)) };
-       
+
         await post(`${config.proxy}/${game.toLocaleLowerCase()}/api/set-board`, setBoardParams);
-        
+
         const convertChoices = convertBetChoice(betChoice);
         const settlement = await bet(player, { name: game, proxyRoute }, { amount, betChoice: convertChoices, freeSpin });
 
@@ -75,7 +75,7 @@ fastify.post("/create-player", async (request, reply) => {
 const start = async () => {
     try {
         await init(config.authenticateSettings);
-        
+
         const playersStart = playersStartWithFilter(config.system);
 
         for await (const player of playersStart) {
